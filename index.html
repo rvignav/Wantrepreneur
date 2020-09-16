@@ -5,33 +5,80 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
-<header>
-  
-</header>
+<script>
+  function handleSignUp() {
+      var email = document.getElementById('inputEmail').value;
+      var password = document.getElementById('inputPassword').value;
+      // var check = document.getElementById('customCheck1');
+      if (!$('#customCheck1').is(':checked')) {
+        alert("Please accept the Terms and Conditions before continuing.")
+      }
+      
+
+    //   if (email.length < 4) {
+    //     alert('Please enter an email address.');
+    //     return;
+    //   }
+    //   if (password.length < 4) {
+    //     alert('Please enter a password.');
+    //     return;
+    //   }
+    //   // Create user with email and pass.
+    //   // [START createwithemail]
+    //   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    //     // Handle Errors here.
+    //     var errorCode = error.code;
+    //     var errorMessage = error.message;
+    //     // [START_EXCLUDE]
+    //     if (errorCode == 'auth/weak-password') {
+    //       alert('The password is too weak.');
+    //     } else {
+    //       alert(errorMessage);
+    //     }
+    //     console.log(error);
+    //     // [END_EXCLUDE]
+    //   });
+    //   // [END createwithemail]
+    }
+</script>
 
 <body>
-  <div id="disqus_thread"></div>
-  <script>
+  <div class="container-fluid">
+    <div class="row no-gutter">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      <div class="col-md-8 col-lg-6">
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9 col-lg-8 mx-auto">
+                <h3 class="login-heading mb-4">Welcome to <b>Wantrepreneur</b>!</h3>
+                <form>
+                  <div class="form-label-group">
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                    <label for="inputEmail">Email address</label>
+                  </div>
   
-  /**
-  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-  /*
-  var disqus_config = function () {
-  this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-  };
-  */
-  (function() { // DON'T EDIT BELOW THIS LINE
-  var d = document, s = d.createElement('script');
-  s.src = 'https://wantrepreneurs.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-  })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                              
-  <script id="dsq-count-scr" src="//wantrepreneurs.disqus.com/count.js" async></script>
+                  <div class="form-label-group">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <label for="inputPassword">Password</label>
+                  </div>
+  
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">I understand that Wantrepreneur has the right to disable accounts that exhibit inappropriate behavior or otherwise violate the <a href="#">Terms and Conditions</a>.</label>
+                  </div>
+                  <input id="clickMe" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="button" value="Sign up" onclick="handleSignUp();" />
+                  <div class="text-center">
+                    Already have an account? <a href="signin.html">Log in here.</a></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 </body>
 
 <script src="js/vendor/bootstrap.bundle.min.js"></script>
