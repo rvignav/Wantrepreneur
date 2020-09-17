@@ -1,7 +1,20 @@
 <!doctype html>
 
 <head>
-  <link rel="stylesheet" href="css/main.css">
+  <script>
+    var css = new Array(
+      '<link rel="stylesheet" type="text/css" href="css/main.css">',
+      '<link rel="stylesheet" type="text/css" href="css/main2.css">',
+      '<link rel="stylesheet" type="text/css" href="css/main3.css">',
+      '<link rel="stylesheet" type="text/css" href="css/main4.css">'
+    );
+    function rand(){
+      return Math.round(Math.random()*(css.length-1));
+    }
+    rand = rand();
+    document.write(css[rand]);
+  </script>
+  <!-- <link rel="stylesheet" href="css/main.css"> -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
@@ -44,9 +57,14 @@
 </script>
 
 <body>
+  <!-- <script>
+    var images = ['https://source.unsplash.com/IuLgi9PWETU', 'https://source.unsplash.com/WEQbe2jBg40', 'https://source.unsplash.com/RSc6D7bO0fA', 'https://source.unsplash.com/xY55bL5mZAM/1000x800'];
+    var rand = images[Math.floor(Math.random() * images.length)];
+    document.getElementById('back').style.background-image = url(rand);
+  </script> -->
   <div class="container-fluid">
     <div class="row no-gutter">
-      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image id=back"></div>
       <div class="col-md-8 col-lg-6">
         <div class="login d-flex align-items-center py-5">
           <div class="container">

@@ -1,7 +1,20 @@
 <!doctype html>
 
 <head>
-  <link rel="stylesheet" href="css/main.css">
+  <script>
+    var css = new Array(
+      '<link rel="stylesheet" type="text/css" href="css/main.css">',
+      '<link rel="stylesheet" type="text/css" href="css/main2.css">',
+      '<link rel="stylesheet" type="text/css" href="css/main3.css">',
+      '<link rel="stylesheet" type="text/css" href="css/main4.css">'
+    );
+    function rand(){
+      return Math.round(Math.random()*(css.length-1));
+    }
+    rand = rand();
+    document.write(css[rand]);
+  </script>
+  <!-- <link rel="stylesheet" href="css/main.css"> -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
