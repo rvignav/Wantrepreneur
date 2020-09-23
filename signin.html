@@ -71,8 +71,8 @@
             return;
           }
           // [END_EXCLUDE]
-        });
-        var user = firebase.auth().currentUser;
+        }).then(function() {
+          var user = firebase.auth().currentUser;
         console.log(user)
         if (!user.emailVerified) {
           alert('The email ' + email + ' is not verified.')
@@ -82,6 +82,8 @@
         // [START authwithemail]
         
         window.location.href = "landing.html"
+        });
+       
         // [END authwithemail]
   }
 </script>

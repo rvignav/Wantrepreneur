@@ -79,14 +79,31 @@
         }
         console.log(error);
         // [END_EXCLUDE]
-      });
-      firebase.auth().currentUser.sendEmailVerification().then(function() {
+      }).then(function() {
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // [START_EXCLUDE]
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+            return;
+          } else {
+            alert(errorMessage);
+            return;
+          }
+          // [END_EXCLUDE]
+        }).then(function() {
+          firebase.auth().currentUser.sendEmailVerification().then(function() {
         // Email Verification sent!
         // [START_EXCLUDE]
         alert('An email has been sent to ' + email + '. Please verify your email to sign in.');
         // [END_EXCLUDE]
         window.location.href = 'signin.html'
       });
+        });
+      });
+      
       // [END createwithemail]
     }
 </script>
