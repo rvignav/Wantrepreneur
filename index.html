@@ -16,43 +16,78 @@
   </script>
   <!-- <link rel="stylesheet" href="css/main.css"> -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDW5G_4e8xUY2MZyuTXDqY3dJj1pSsfRPU",
+    authDomain: "wantrepreneur-scode.firebaseapp.com",
+    databaseURL: "https://wantrepreneur-scode.firebaseio.com",
+    projectId: "wantrepreneur-scode",
+    storageBucket: "wantrepreneur-scode.appspot.com",
+    messagingSenderId: "642050930215",
+    appId: "1:642050930215:web:0623dfc3339f1d165b0002",
+    measurementId: "G-RP8PW8DK8P"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  firebase.auth();
+</script>
+
 </head>
 
 <script>
+
   function handleSignUp() {
       var email = document.getElementById('inputEmail').value;
       var password = document.getElementById('inputPassword').value;
       // var check = document.getElementById('customCheck1');
       if (!$('#customCheck1').is(':checked')) {
         alert("Please accept the Terms and Conditions before continuing.")
-      } else {
-        window.location.href = 'landing.html'
-      }
+        return;
+      } 
 
-    //   if (email.length < 4) {
-    //     alert('Please enter an email address.');
-    //     return;
-    //   }
-    //   if (password.length < 4) {
-    //     alert('Please enter a password.');
-    //     return;
-    //   }
-    //   // Create user with email and pass.
-    //   // [START createwithemail]
-    //   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-    //     // Handle Errors here.
-    //     var errorCode = error.code;
-    //     var errorMessage = error.message;
-    //     // [START_EXCLUDE]
-    //     if (errorCode == 'auth/weak-password') {
-    //       alert('The password is too weak.');
-    //     } else {
-    //       alert(errorMessage);
-    //     }
-    //     console.log(error);
-    //     // [END_EXCLUDE]
-    //   });
-    //   // [END createwithemail]
+      if (email.length < 4) {
+        alert('Please enter an email address.');
+        return;
+      }
+      if (password.length < 4) {
+        alert('Please enter a password.');
+        return;
+      }
+      // Create user with email and pass.
+      // [START createwithemail]
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(errorMessage);
+          return;
+        }
+        console.log(error);
+        // [END_EXCLUDE]
+      });
+      firebase.auth().currentUser.sendEmailVerification().then(function() {
+        // Email Verification sent!
+        // [START_EXCLUDE]
+        alert('An email has been sent to ' + email + '. Please verify your email to sign in.');
+        // [END_EXCLUDE]
+        window.location.href = 'signin.html'
+      });
+      // [END createwithemail]
     }
 </script>
 
@@ -84,7 +119,7 @@
   
                   <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">I understand that Wantrepreneur has the right to disable accounts that exhibit inappropriate behavior or otherwise violate the <a href="#">Terms and Conditions</a>.</label>
+                    <label class="custom-control-label" for="customCheck1">I understand that Wantrepreneur has the right to disable accounts that exhibit inappropriate behavior or otherwise violate the <a href="https://help.disqus.com/en/articles/1717102-terms-of-service">Terms and Conditions</a>.</label>
                   </div>
                   <input id="clickMe" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="button" value="Sign up" onclick="handleSignUp();" />
                   <div class="text-center">
